@@ -1,0 +1,47 @@
+#########################################################
+# Sample database job definition
+#########################################################
+
+#########################################################
+# Text filter, data source, field mapping configuration 
+#########################################################
+!include include/common.rc
+
+#########################################################
+# Common settings 
+#########################################################
+type = dbg
+target_dir = /home/some/where
+# format = fgf
+# charset = UTF-8
+# max_file_size = 10MB
+# init = clear | backup | keep
+# queue_size = 200 
+# thread_count = 4
+# before = SampleGroovy.beforeProcess(@mode@)
+# after = SampleGroovy.afterProcess(@mode@)
+
+#########################################################
+# DBG specific settings 
+#########################################################
+data_source = Oracle
+query = \
+SELECT * \
+  FROM "table" \
+ WHERE condition
+# count_query = auto
+# sub_job = {
+#	condition = and mode(idx, 4) = ?, 0-3
+#	parallel = false
+# }
+# fetch_size = 128
+# field_mapping = Sample
+# inc_thread_count = 4
+# inc_strategy = off | hvm | log
+# hvm_column =
+# hvm_add_condition =
+# hvm_del_condition =
+# hvm_iud_method = SampleGroovy.decision_IUD(@reg_date@, @mod_date@, @delete_YN@)
+# log_table =
+# log_condition =
+ 

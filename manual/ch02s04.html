@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/html; charset=UTF-8" http-equiv="content-type" /><title>4. 커넥터 설치</title><link href="webhelp.css" rel="stylesheet" type="text/css" /><meta content="DocBook XSL Stylesheets V1.79.1" name="generator" /><link href="index.html" rel="home" title="KONAN Connector V2.1" /><link href="cnt_install.html" rel="up" title="2장. 설치" /><link href="ch02s03.html" rel="prev" title="3. 커넥터 서버 설치 조건" /><link href="ch02s05.html" rel="next" title="5. 디렉터리 구성" /><link href="_wh/jquery-ui.css" rel="stylesheet" type="text/css" /><link href="_wh/wh.css" rel="stylesheet" type="text/css" /><script src="_wh/jquery.min.js" type="text/javascript">
+    </script><script src="_wh/jquery-ui.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/wh.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/search.js" type="text/javascript">
+    </script><link href="_wh/user/header_footer.css" rel="stylesheet" type="text/css" /></head><body>
+    <div id="wh-header">
+    
+  
+  
+	 <table id="page-header" style="border-spacing: 0; width: 100%; height:63px; background-color:#EDEDED; border-bottom:2px solid #dddddd;">
+      <tr>
+        <td style="vertical-align: middle; width: 280px; ">
+		
+		</td>
+
+        <td style="vertical-align: middle;"><h1 id="page-header-title">커넥터 사용자 설명서</h1></td>
+
+        <td style="vertical-align: middle; width: 110px;"> </td>
+      </tr>
+    </table>
+
+	
+</div>
+
+    <div id="wh-body">
+      <div id="wh-navigation">
+        <ul id="wh-tabs">
+          <li id="wh-toc-tab"><a href="#wh-toc-pane"><span>Contents</span></a></li>
+          
+          <li id="wh-search-tab"><a href="#wh-search-pane"><span>Search</span></a></li>
+        </ul>
+        <div id="wh-toc-pane">
+          <div id="wh-toc-form">
+            <span id="wh-toc-control"><a href="#">Collapse 
+            All</a><a href="#">Expand All</a></span>
+            <button id="wh-toc-previous">Previous</button>
+            <button id="wh-toc-next">Next</button>
+            <button id="wh-toc-print">Print</button>
+          </div>
+          <script charset="UTF-8" src="_wh/toc.js" type="text/javascript">
+          </script>
+        </div>
+        
+        <div id="wh-search-pane">
+          <div id="wh-search-form">
+            <input id="wh-search-field" type="text" /><button id="wh-search-button">Search</button><span id="wh-highlight-group"><input checked="checked" id="wh-highlight-toggle" type="checkbox" /><label for="wh-highlight-toggle">Toggle Highlight</label></span>
+          </div>
+          <div id="wh-search-results">
+          </div>
+        </div>
+      </div>
+      <div id="wh-separator">
+      </div>
+      <div id="wh-content">
+      <div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="d0e401"></a>4. 커넥터 설치</h2></div></div></div><p>Konan Search 패키지를 설치하면 $KS_HOME/ext/connctor 디렉터리가 존재한다. bin 디렉터리로 이동하여, run.bat 또는 run.sh 스크립트를 실행한다.</p><p>이때, 발급받은 라이선스 키(cnt.lic)를 입력해야 설치가 진행된다.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p>2.1.4 버전부터 라이선스 검사를 하지 않기 때문에 라이선스 키 입력은 하지 않는다.</p></div><h3><a id="d0e412"></a>Linux</h3><pre class="programlisting">[konan@locolhost ~]$ cd KS\ext\connector\bin
+[konan@locolhost bin]./run.sh
+Enter license key: 3280FF947D3D67F9B2EA6A26713D5F0212A45FCCE41DE2A6D264BAB0F2B6350F
+Usage: connector [-task] [task-options] [task-args]
+
+Tasks (default task is start):
+    start           - Start specified job.
+    test            - Test specified job.
+    conv            - Convert job definitions from old Kaegis.xml.
+    encrypt         - Encrypt input string.
+    decrypt         - Decrypt input string.
+
+Task Options (Options specific to each task):
+    -version        - Display the version information.
+    -h, -?, -help   - Display this help information.
+                      To display task specific help, use &quot;connector [-task] -h,-?,-help&quot;
+Task Arguments:
+    -Arguments needed by each specific task.</pre><h3><a id="d0e416"></a>Windows</h3><pre class="programlisting">D:\KS\ext\connector\bin&gt; run.bat
+Enter license key: 3280FF947D3D67F9B2EA6A26713D5F0212A45FCCE41DE2A6D264BAB0F2B6350F
+Usage: connector [-task] [task-options] [task-args]
+
+Tasks (default task is start):
+    start           - Start specified job.
+    test            - Test specified job.
+    conv            - Convert job definitions from old Kaegis.xml.
+    encrypt         - Encrypt input string.
+    decrypt         - Decrypt input string.
+
+Task Options (Options specific to each task):
+    -version        - Display the version information.
+    -h, -?, -help   - Display this help information.
+                      To display task specific help, use &quot;connector [-task] -h,-?,-help&quot;
+Task Arguments:
+    -Arguments needed by each specific task.</pre><p>설치가 완료되면 커넥터를 실행할 수 있다. <a class="link" href="run_bat.html" title="5장. 실행">&quot;실행&quot;</a>의 내용을 따라 진행한다.</p><p>실행을 위해서는 작업 설정과 필드 매핑이 설정되어야 한다. 자세한 설정 방법은 <a class="link" href="cnt_setting.html" title="3장. 작업 설정">&quot;작업 설정&quot;</a>, <a class="link" href="DataMapping.html" title="4장. 필드 매핑">&quot;필드 매핑&quot;</a>을 참고한다.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>라이선스 키는 최대 2개까지 지원한다. 두 번째 라이선스 키는 <span class="boldbgyellow">{설치경로}/bin/verify2.lic</span>에 입력한다.</p></li><li class="listitem"><p>문서필터는 $KS_HOME/ext/filter에 설치 패키지가 있다. 문서필터 설치 및 사용 방법은 문서필터 매뉴얼을 참고한다.</p></li></ul></div></div></div></div>
+    </div>
+
+    <div id="wh-footer">
+    <p id="page-footer" style="font-family: 'Malgun Gothic',Helvetica,Arial,sans-serif;font-size: 12px; margin-top: 20px;">Copyright <span style="color: #FF8526;">Konan Technology</span> Inc. All Rights Reserved.</p></div>
+  </body></html>

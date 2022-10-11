@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/html; charset=UTF-8" http-equiv="content-type" /><title>부록 A. 업그레이드 (1.6 - 2.0이상)</title><link href="webhelp.css" rel="stylesheet" type="text/css" /><meta content="DocBook XSL Stylesheets V1.79.1" name="generator" /><link href="index.html" rel="home" title="KONAN Connector V2.1" /><link href="index.html" rel="up" title="KONAN Connector V2.1" /><link href="cnt_encrypt.html" rel="prev" title="7장. 암호화/복호화" /><link href="db_info.html" rel="next" title="부록 B. 데이터베이스 정보 조회" /><link href="_wh/jquery-ui.css" rel="stylesheet" type="text/css" /><link href="_wh/wh.css" rel="stylesheet" type="text/css" /><script src="_wh/jquery.min.js" type="text/javascript">
+    </script><script src="_wh/jquery-ui.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/wh.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/search.js" type="text/javascript">
+    </script><link href="_wh/user/header_footer.css" rel="stylesheet" type="text/css" /></head><body>
+    <div id="wh-header">
+    
+  
+  
+	 <table id="page-header" style="border-spacing: 0; width: 100%; height:63px; background-color:#EDEDED; border-bottom:2px solid #dddddd;">
+      <tr>
+        <td style="vertical-align: middle; width: 280px; ">
+		
+		</td>
+
+        <td style="vertical-align: middle;"><h1 id="page-header-title">커넥터 사용자 설명서</h1></td>
+
+        <td style="vertical-align: middle; width: 110px;"> </td>
+      </tr>
+    </table>
+
+	
+</div>
+
+    <div id="wh-body">
+      <div id="wh-navigation">
+        <ul id="wh-tabs">
+          <li id="wh-toc-tab"><a href="#wh-toc-pane"><span>Contents</span></a></li>
+          
+          <li id="wh-search-tab"><a href="#wh-search-pane"><span>Search</span></a></li>
+        </ul>
+        <div id="wh-toc-pane">
+          <div id="wh-toc-form">
+            <span id="wh-toc-control"><a href="#">Collapse 
+            All</a><a href="#">Expand All</a></span>
+            <button id="wh-toc-previous">Previous</button>
+            <button id="wh-toc-next">Next</button>
+            <button id="wh-toc-print">Print</button>
+          </div>
+          <script charset="UTF-8" src="_wh/toc.js" type="text/javascript">
+          </script>
+        </div>
+        
+        <div id="wh-search-pane">
+          <div id="wh-search-form">
+            <input id="wh-search-field" type="text" /><button id="wh-search-button">Search</button><span id="wh-highlight-group"><input checked="checked" id="wh-highlight-toggle" type="checkbox" /><label for="wh-highlight-toggle">Toggle Highlight</label></span>
+          </div>
+          <div id="wh-search-results">
+          </div>
+        </div>
+      </div>
+      <div id="wh-separator">
+      </div>
+      <div id="wh-content">
+      <div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a id="upgrade"></a>부록 A. 업그레이드 (1.6 - 2.0이상)</h1></div></div></div><p>1.6 버전에서 2.0이상의 버전으로 업그레이드하는 경우 아래 절차를 따라 수행한다.</p><h2><a id="d0e3478"></a>1. 설정 파일 마이그레이션</h2><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a class="link" href="conv.html" title="4. 설정 파일 변환">&quot;설정 파일 변환&quot;</a>을 수행한다. 설정 파일 및 덤프 스크립트 파일들이 변환된다.</p></li><li class="listitem"><p>재처리 작업 변환 시 경고 메시지가 나오면 직접 확인 절차가 필요하다.</p></li></ul></div><h2><a id="d0e3489"></a>2. 그루비 스크립트 마이그레이션</h2><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>기본으로 제공되는 SampleGroovy.groovy 파일을 수정하여 사용하는 경우</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>SampleGroovy 생성자를 더는 필요로 하지 않는다.</p></li><li class="listitem"><p>Commons-Lang 모듈을 Commons-Lang3으로 업그레이드함에 따라 org.apache.commons.lang 패키지를 org.apache.commons.lang3로 변경해야 한다.</p></li></ul></div></li></ul></div></div></div>
+    </div>
+
+    <div id="wh-footer">
+    <p id="page-footer" style="font-family: 'Malgun Gothic',Helvetica,Arial,sans-serif;font-size: 12px; margin-top: 20px;">Copyright <span style="color: #FF8526;">Konan Technology</span> Inc. All Rights Reserved.</p></div>
+  </body></html>

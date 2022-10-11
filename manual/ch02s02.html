@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/html; charset=UTF-8" http-equiv="content-type" /><title>2. 커넥터 설치 시 필요한 SW</title><link href="webhelp.css" rel="stylesheet" type="text/css" /><meta content="DocBook XSL Stylesheets V1.79.1" name="generator" /><link href="index.html" rel="home" title="KONAN Connector V2.1" /><link href="cnt_install.html" rel="up" title="2장. 설치" /><link href="ch02s01.html" rel="prev" title="1. 라이선스 키" /><link href="ch02s03.html" rel="next" title="3. 커넥터 서버 설치 조건" /><link href="_wh/jquery-ui.css" rel="stylesheet" type="text/css" /><link href="_wh/wh.css" rel="stylesheet" type="text/css" /><script src="_wh/jquery.min.js" type="text/javascript">
+    </script><script src="_wh/jquery-ui.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/wh.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/search.js" type="text/javascript">
+    </script><link href="_wh/user/header_footer.css" rel="stylesheet" type="text/css" /></head><body>
+    <div id="wh-header">
+    
+  
+  
+	 <table id="page-header" style="border-spacing: 0; width: 100%; height:63px; background-color:#EDEDED; border-bottom:2px solid #dddddd;">
+      <tr>
+        <td style="vertical-align: middle; width: 280px; ">
+		
+		</td>
+
+        <td style="vertical-align: middle;"><h1 id="page-header-title">커넥터 사용자 설명서</h1></td>
+
+        <td style="vertical-align: middle; width: 110px;"> </td>
+      </tr>
+    </table>
+
+	
+</div>
+
+    <div id="wh-body">
+      <div id="wh-navigation">
+        <ul id="wh-tabs">
+          <li id="wh-toc-tab"><a href="#wh-toc-pane"><span>Contents</span></a></li>
+          
+          <li id="wh-search-tab"><a href="#wh-search-pane"><span>Search</span></a></li>
+        </ul>
+        <div id="wh-toc-pane">
+          <div id="wh-toc-form">
+            <span id="wh-toc-control"><a href="#">Collapse 
+            All</a><a href="#">Expand All</a></span>
+            <button id="wh-toc-previous">Previous</button>
+            <button id="wh-toc-next">Next</button>
+            <button id="wh-toc-print">Print</button>
+          </div>
+          <script charset="UTF-8" src="_wh/toc.js" type="text/javascript">
+          </script>
+        </div>
+        
+        <div id="wh-search-pane">
+          <div id="wh-search-form">
+            <input id="wh-search-field" type="text" /><button id="wh-search-button">Search</button><span id="wh-highlight-group"><input checked="checked" id="wh-highlight-toggle" type="checkbox" /><label for="wh-highlight-toggle">Toggle Highlight</label></span>
+          </div>
+          <div id="wh-search-results">
+          </div>
+        </div>
+      </div>
+      <div id="wh-separator">
+      </div>
+      <div id="wh-content">
+      <div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="d0e195"></a>2. 커넥터 설치 시 필요한 SW</h2></div></div></div><p>Konan Search 패키지를 설치하면 $KS_HOME/ext/connctor와 $KS_HOME/ext/filter 디렉터리에 커넥터와 문서필터 설치파일이 있다.</p><p>JDK의 경우, 코난테크놀로지의 담당자를 통해 별도로 설치를 준비한다.</p><p>또한, 커넥터를 다른 서버에서 단독 설치하는 경우, 코난테크놀로지의 담당자는 아래 경로를 참고하여 사내 시스템에서 설치 패키지를 준비한다.</p><div class="informaltable"><table border="1" class="informaltable"><colgroup><col align="center" class="col1" width="20%" /><col align="left" width="12%" /><col width="68%" /></colgroup><thead><tr><th align="center">설치 항목</th><th align="center">필수/옵션</th><th align="center">다운로드 경로 및 파일명</th></tr></thead><tbody><tr><td align="center" valign="middle"><p>커넥터</p></td><td align="center" valign="middle">필수</td><td align="left"><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>[IRIS] &gt; [[00] Product Information] &gt; [02. KONAN Product Release] &gt; [P105. KONAN Connector]</p></li><li class="listitem"><p>KONAN-Connector-{버전}-{릴리스날짜}-{리비전번호}.tar</p></li></ul></div></td></tr><tr><td align="center" valign="middle"><p>JDK (1.7 이상)</p></td><td align="center" valign="middle">필수</td><td align="left"><p>설치하고자 하는 OS에 적합한 JDK를 설치한다.</p><p>JAVA_HOME 환경 변수는 JDK가 설치된 디렉터리를 가리키고 있어야 한다.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>http://www.oracle.com/technetwork/java/javase/downloads/index.html</p></li></ul></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p>Notes 덤프를 수행하고자 할때, 32bit Notes Client를 사용하므로 32bit용으로 설치해야 한다.</p></div></td></tr><tr><td align="center">문서필터</td><td align="center"><p>옵션</p></td><td align="left"><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>[IRIS] &gt; [[00] Product Information] &gt; [02. KONAN Product Release] &gt; [P103. TextFilter]</p></li></ul></div></td></tr></tbody></table></div></div></div>
+    </div>
+
+    <div id="wh-footer">
+    <p id="page-footer" style="font-family: 'Malgun Gothic',Helvetica,Arial,sans-serif;font-size: 12px; margin-top: 20px;">Copyright <span style="color: #FF8526;">Konan Technology</span> Inc. All Rights Reserved.</p></div>
+  </body></html>

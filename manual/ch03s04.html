@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/html; charset=UTF-8" http-equiv="content-type" /><title>4. 데이터베이스</title><link href="webhelp.css" rel="stylesheet" type="text/css" /><meta content="DocBook XSL Stylesheets V1.79.1" name="generator" /><link href="index.html" rel="home" title="KONAN Connector V2.1" /><link href="cnt_setting.html" rel="up" title="3장. 작업 설정" /><link href="ch03s03.html" rel="prev" title="3. 파일시스템" /><link href="hvm.html" rel="next" title="4.1. High Value Mark (HVM)" /><link href="_wh/jquery-ui.css" rel="stylesheet" type="text/css" /><link href="_wh/wh.css" rel="stylesheet" type="text/css" /><script src="_wh/jquery.min.js" type="text/javascript">
+    </script><script src="_wh/jquery-ui.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/wh.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/search.js" type="text/javascript">
+    </script><link href="_wh/user/header_footer.css" rel="stylesheet" type="text/css" /></head><body>
+    <div id="wh-header">
+    
+  
+  
+	 <table id="page-header" style="border-spacing: 0; width: 100%; height:63px; background-color:#EDEDED; border-bottom:2px solid #dddddd;">
+      <tr>
+        <td style="vertical-align: middle; width: 280px; ">
+		
+		</td>
+
+        <td style="vertical-align: middle;"><h1 id="page-header-title">커넥터 사용자 설명서</h1></td>
+
+        <td style="vertical-align: middle; width: 110px;"> </td>
+      </tr>
+    </table>
+
+	
+</div>
+
+    <div id="wh-body">
+      <div id="wh-navigation">
+        <ul id="wh-tabs">
+          <li id="wh-toc-tab"><a href="#wh-toc-pane"><span>Contents</span></a></li>
+          
+          <li id="wh-search-tab"><a href="#wh-search-pane"><span>Search</span></a></li>
+        </ul>
+        <div id="wh-toc-pane">
+          <div id="wh-toc-form">
+            <span id="wh-toc-control"><a href="#">Collapse 
+            All</a><a href="#">Expand All</a></span>
+            <button id="wh-toc-previous">Previous</button>
+            <button id="wh-toc-next">Next</button>
+            <button id="wh-toc-print">Print</button>
+          </div>
+          <script charset="UTF-8" src="_wh/toc.js" type="text/javascript">
+          </script>
+        </div>
+        
+        <div id="wh-search-pane">
+          <div id="wh-search-form">
+            <input id="wh-search-field" type="text" /><button id="wh-search-button">Search</button><span id="wh-highlight-group"><input checked="checked" id="wh-highlight-toggle" type="checkbox" /><label for="wh-highlight-toggle">Toggle Highlight</label></span>
+          </div>
+          <div id="wh-search-results">
+          </div>
+        </div>
+      </div>
+      <div id="wh-separator">
+      </div>
+      <div id="wh-content">
+      <div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="d0e915"></a>4. 데이터베이스</h2></div></div></div><p>다음 옵션들은 데이터베이스 덤프에 사용하는 설정이다.</p><div class="informaltable"><table border="1" class="informaltable"><colgroup><col align="left" width="34%" /><col width="66%" /></colgroup><thead><tr><th align="center">옵션</th><th align="center">설명</th></tr></thead><tbody><tr><td align="left"><a id="data_source"></a><p><a id="data_source_desc"></a>data_source (필수)</p></td><td align="left"><p>JDBC 데이터 소스</p><pre class="programlisting">data_source = {
+    driver = oracle.jdbc.driver.OracleDriver
+    url = jdbc:oracle:thin:@127.0.0.1:1521:KCON
+    user = foo
+    password = bar
+    validationQuery = select 1 from dual
+    autocommit = true
+}</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p>설치가 완료되면 기본적으로 lib 디렉터리에 Oracle (ojdbc6-11.2.0.3.jar), MySQL (mysql-connector-java-5.1.25.jar) JDBC driver가 함께 설치된다.</p><p>또한, <span class="boldbgyellow">lib/extra</span> 디렉터리에 추가로 Microsoft SQL Server (sqljdbc4.jar), Informix (ifxjdbc.jar), Tibero (tibero5-jdbc.jar), Altibase (Altibase.jar) 데이터베이스의 JDBC driver가 설치된다.</p><p>Oracle, MySQL JDBC driver 외의 JDBC driver를 사용하려면 <span class="boldbgyellow">lib/extra</span>에 있는 driver를 lib 디렉터리로 복사하거나 해당 제조사의 JDBC driver를 내려받아 lib 디렉터리에 복사한다.</p><p>덤프 대상 데이터베이스에 적합한 최신 JDBC driver 설치를 권장한다.</p><p>기타 설정과 관련해서는 FAQ를 참고한다.</p></div></td></tr><tr><td align="left"><p>query (필수)</p></td><td align="left"><p>덤프 시 사용할 메인 SQL</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p>query 설정 시 줄바꿈 구분자(\), multiline 구분자(''')를 사용할 수 있다.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>줄바꿈 구분자 사용 시</p><pre class="programlisting">query = select * from test_table \ where 1=1</pre></li><li class="listitem"><p>multiline 구분자 사용 시</p><pre class="programlisting">query = '''select * from test_table where 1=1 '''</pre></li></ul></div></div></td></tr><tr><td align="left"><p>count_query</p></td><td align="left"><p>덤프할 레코드 개수를 구하기 위해 사용할 SQL</p><p>지정하지 않으면 예상 완료 시각을 출력하지 않는다.</p><p>auto로 설정 시 메인 SQL로부터 자동으로 생성한다.</p></td></tr><tr><td align="left"><p>sub_job</p></td><td align="left"><p>벌크 덤프 설정에서 메인 SQL을 여러 개로 나누어 실행할 때 설정한다.</p><p>대상 레코드가 많아 DBMS와의 연결이 중간에 끊기거나 스냅샷 오류가 발생했을 때 사용할 수 있다.</p><p>혹은 병렬로 동시에 검색하여 덤프 속도를 높이기 위해 사용할 수도 있다.</p><pre class="programlisting">sub_job = {
+condition = and mod(idx, 4)=0
+condition = and mod(idx, 4)=1
+condition = and mod(idx, 4)=2
+condition = and mod(idx, 4)=3
+parallel = true
+}</pre><p></p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>condition : 나누어 작업할 쿼리 조건을 설정한다. 메인 SQL에 추가되어 실행된다.</p></li><li class="listitem"><p>parallel : 병렬로 실행할지를 설정한다. (기본값 : false, 차례대로 실행한다.)</p></li></ul></div><p>설정할 조건이 많을 경우 아래와 같이 범위 파라미터로 설정할 수도 있다. 아래 예의 경우 ?에 0-3 사이의 숫자 (0, 1, 2, 3)가 들어간다.</p><pre class="programlisting">sub_job = {
+  condition = and mod(idx, 4) = ?, 0-3
+}</pre><p>범위 파라미터는 콤마(,)와 대시(-) 문자로 설정한다.</p><p>예를 들어 0, 1, 3-5, 7이 경우 (0, 1, 3, 4, 5, 7)로 치환된다. </p><p>파리미터 형태가 문자열일 때는 ,로만 설정 가능하며 파라미터값을 '로 묶어 나열한다. (예: 'LA', 'NY', 'CA')</p><p>또한 아래와 같이 파리미터가 있는 조건과 없는 조건을 혼합하여 사용할 수도 있다.</p><pre class="programlisting">sub_job = {
+ condition = and create_date &lt;= '2007'
+ condition = and create_date = ?, '2008'
+,'2009','2010','2011','2012','2013'
+,'2014'
+ condition = and create_date &gt;= '2015'
+}</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p>sub_job 설정은 증분 덤프 시에는 적용하지 않는다.</p></div></td></tr><tr><td align="left"><p>fetch_size</p></td><td align="left"><p>패치 레코드 개수 (기본값:128)</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p>MySQL에서 OOME (Out Of Memory Exception) 발생 시 -2147483648(INT.MINVALUE)로 설정한다.</p></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p><a class="link" href="faq_dbg.html" title="부록 H. FAQ 데이터베이스 덤프">&quot;FAQ 데이터베이스 덤프&quot;</a>를 참고한다.</p></div></td></tr><tr><td align="left"><p>field_mapping</p></td><td align="left"><p><a class="link" href="DataMapping.html" title="4장. 필드 매핑">&quot;필드 매핑&quot;</a>을 참고하십시오. </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>예외값 : 공백</p></li><li class="listitem"><p>설정하지 않을 경우 칼럼명과 같게 필드명이 매핑된다.</p></li></ul></div></div></td></tr><tr><td align="left"><p>inc_strategy</p></td><td align="left"><p>증분 덤프 시 사용할 방법 (기본값 : off)</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>off : 증분 덤프를 사용하지 않는다.</p></li><li class="listitem"><p>hvm : High Value Mark 방식</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">작은 정보</h3><p>hvm에 사용되는 옵션</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>hvm_column (필수)</p></li><li class="listitem"><p>hvm_add_condition (필수)</p></li><li class="listitem"><p>hvm_del_condition</p></li><li class="listitem"><p>hvm_iud_method (생략시, I(Insert)로 결정)</p></li></ul></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p><a class="link" href="hvm.html" title="4.1. High Value Mark (HVM)">&quot;High Value Mark (HVM)&quot;</a>를 참고한다.</p></div></li><li class="listitem"><p>log : Log Table 방식</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">작은 정보</h3><p>Log Table에 사용되는 옵션</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>log_table (생략 시, kc_job_log)</p></li><li class="listitem"><p>log_condition (필수)</p></li><li class="listitem"><p>log_query (생략 시, ANSI SQL 사용)</p></li><li class="listitem"><p>log_event_time_query</p></li><li class="listitem"><p>log_delete_query</p></li></ul></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p><a class="link" href="logtable.html" title="4.2. Log Table">&quot;Log Table&quot;</a>을 참고한다.</p></div></li></ul></div></td></tr><tr><td align="left"><p>inc_thread_count</p></td><td align="left"><p>증분 덤프 시 작업 스레드 개수 (기본값 : thread_count 값)</p></td></tr><tr><td align="left"><p>hvm_column</p><p>(inc_strategy = hvm 설정 시, 필수)</p></td><td align="left"><p>High Value Mark 증분 덤프 시 기준 칼럼명</p></td></tr><tr><td align="left"><p>hvm_add_condition</p><p>(inc_strategy = hvm 설정 시, 필수)</p></td><td align="left"><p>High Value Mark 증분 덤프 시 메인 SQL에 추가되는 문장 </p><pre class="programlisting">hvm_add_condition = AND modified_date &gt;=
+DATE_FORMAT('@last_hvm@', '%Y-%m-%d%H:%i:%s')</pre><p>(last_hvm)으로 변수 설정 시에는 소프트 파싱 방식으로 쿼리가 실행된다. 반면에 $last_hvm$으로 변수 설정 시에는 하드 파싱 방식으로 쿼리가 실행된다. 소프트 파싱 및 하드 파싱의 차이에 대해서는 <a class="link" href="hvm.html" title="4.1. High Value Mark (HVM)">&quot;High Value Mark (HVM)&quot;</a>를 참조한다.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p>(last_hvm) 값은 data 디렉터리에 생성되는 작업명.status 파일에서 확인할 수 있다.</p></div></td></tr><tr><td align="left"><p>hvm_del_condition</p><p>(inc_strategy = hvm설정 시, 옵션)</p></td><td align="left"><p>High Value Mark 증분 덤프 시 메인 SQL에서 삭제해야 할 조건</p><p>삭제할 조건이 여러 개일 경우 (&amp;&amp;)로 구분한다.</p><pre class="programlisting">hvm_del_condition = AND del_yn = 'N'</pre></td></tr><tr><td align="left"><p>hvm_iud_method</p><p>(inc_strategy = hvm 설정 시, 옵션)</p></td><td align="left"><p>High Value Mark 증분 덤프 시 I(nsert), U(pdate), D(elete) 결정 메소드</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>생략 시 I(insert)로 결정</p></li></ul></div><pre class="programlisting">hvm_iud_method = 
+SampleGroovy.decision_IUD
+(&quot;@created_date@&quot;, &quot;@modified_date@&quot;, &quot;@del_yn@&quot;)</pre></td></tr><tr><td align="left"><p>log_table</p><p>(inc_strategy = log 설정 시)</p></td><td align="left"><p>Log Table 기반 증분 덤프 시 로그 테이블 명 (기본값 : kc_job_log)</p></td></tr><tr><td align="left"><p>log_condition</p><p>(inc_strategy = log 설정 시, 필수)</p></td><td align="left"><p>Log Table 기반 증분 덤프 시 메인 SQL에 추가되는 문장</p><p>Log Table에서 구한 PK를 파라미터로 받는다.</p><pre class="programlisting">log_condition = AND no = @pk_value@</pre></td></tr><tr><td align="left"><p>log_query</p><p>(inc_strategy = log 설정 시, 옵션)</p></td><td align="left"><p>Log Table에서 증분 레코드를 구할 때 사용할 쿼리를 직접 정의할 수 있다.</p><p>생략 시 기본으로 정의된 ANSI SQL이 사용된다. </p><pre class="programlisting">log_query = \
+SELECT pk_value, iud_type \
+  FROM kc_job_log \
+ WHERE job_id = 'LOG'
+ ORDER BY pk_value, event_time</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p>직접 쿼리를 정의할 경우 반드시 출력 칼럼의 순서 및 정렬 기준을 지켜야 한다. PK 값과 IUD 값을 PK 및 이벤트 발생순으로 구하는 쿼리로 설정한다.</p></div></td></tr><tr><td align="left"><p>log_event_time_query</p><p>(inc_strategy = log 설정 시, 옵션)</p></td><td align="left"><p>Log Table에서 마지막 이벤트 로그의 발생 시각을 구하는 쿼리</p><pre class="programlisting">log_event_time_query = \
+SELECT max(event_time) FROM kc_job_log WHERE job_id='LOG'</pre></td></tr><tr><td align="left"><p>log_delete_query</p><p>(inc_strategy = log 설정 시, 옵션)</p></td><td align="left"><p>증분 덤프 후 로그 테이블에서 처리된 로그 이벤트를 삭제하기 위해 사용되는 쿼리</p><pre class="programlisting">log_delete_query = \
+DELETE FROM kc_job_log WHERE job_id='LOG' AND event_time &lt; ?</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p>반드시 log_event_time_query로 구한 시각을 파라미터로 받는 쿼리로 설정한다.</p></div></td></tr><tr><td align="left"><p>log_optimize</p><p>(inc_strategy = log 설정 시, 옵션)</p></td><td align="left"><p>처음과 마지막 로그로 IUD 처리없이, 무조건 제일 마지막 로그로 이벤트를 처리한다. (2.0.9부터 제공)</p><p>기본값 true이며, 사용하지 않는 경우 false로 설정한다.</p><pre class="programlisting">log_optimize=false</pre></td></tr><tr><td align="left">base_query</td><td align="left"><p>데이터베이스에서 마스터테이블 이용 시 사용할 메인 SQL </p><p>증분 색인은 HVM만 지원됨</p></td></tr></tbody></table></div></div></div>
+    </div>
+
+    <div id="wh-footer">
+    <p id="page-footer" style="font-family: 'Malgun Gothic',Helvetica,Arial,sans-serif;font-size: 12px; margin-top: 20px;">Copyright <span style="color: #FF8526;">Konan Technology</span> Inc. All Rights Reserved.</p></div>
+  </body></html>

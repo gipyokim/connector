@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/html; charset=UTF-8" http-equiv="content-type" /><title>9. XML 파일 덤프</title><link href="webhelp.css" rel="stylesheet" type="text/css" /><meta content="DocBook XSL Stylesheets V1.79.1" name="generator" /><link href="index.html" rel="home" title="KONAN Connector V2.1" /><link href="cnt_setting.html" rel="up" title="3장. 작업 설정" /><link href="ch03s08.html" rel="prev" title="8. Notes 덤프" /><link href="ch03s10.html" rel="next" title="10. 기타" /><link href="_wh/jquery-ui.css" rel="stylesheet" type="text/css" /><link href="_wh/wh.css" rel="stylesheet" type="text/css" /><script src="_wh/jquery.min.js" type="text/javascript">
+    </script><script src="_wh/jquery-ui.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/wh.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/search.js" type="text/javascript">
+    </script><link href="_wh/user/header_footer.css" rel="stylesheet" type="text/css" /></head><body>
+    <div id="wh-header">
+    
+  
+  
+	 <table id="page-header" style="border-spacing: 0; width: 100%; height:63px; background-color:#EDEDED; border-bottom:2px solid #dddddd;">
+      <tr>
+        <td style="vertical-align: middle; width: 280px; ">
+		
+		</td>
+
+        <td style="vertical-align: middle;"><h1 id="page-header-title">커넥터 사용자 설명서</h1></td>
+
+        <td style="vertical-align: middle; width: 110px;"> </td>
+      </tr>
+    </table>
+
+	
+</div>
+
+    <div id="wh-body">
+      <div id="wh-navigation">
+        <ul id="wh-tabs">
+          <li id="wh-toc-tab"><a href="#wh-toc-pane"><span>Contents</span></a></li>
+          
+          <li id="wh-search-tab"><a href="#wh-search-pane"><span>Search</span></a></li>
+        </ul>
+        <div id="wh-toc-pane">
+          <div id="wh-toc-form">
+            <span id="wh-toc-control"><a href="#">Collapse 
+            All</a><a href="#">Expand All</a></span>
+            <button id="wh-toc-previous">Previous</button>
+            <button id="wh-toc-next">Next</button>
+            <button id="wh-toc-print">Print</button>
+          </div>
+          <script charset="UTF-8" src="_wh/toc.js" type="text/javascript">
+          </script>
+        </div>
+        
+        <div id="wh-search-pane">
+          <div id="wh-search-form">
+            <input id="wh-search-field" type="text" /><button id="wh-search-button">Search</button><span id="wh-highlight-group"><input checked="checked" id="wh-highlight-toggle" type="checkbox" /><label for="wh-highlight-toggle">Toggle Highlight</label></span>
+          </div>
+          <div id="wh-search-results">
+          </div>
+        </div>
+      </div>
+      <div id="wh-separator">
+      </div>
+      <div id="wh-content">
+      <div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="d0e1973"></a>9. XML 파일 덤프</h2></div></div></div><p>다음 옵션들은 XML 파일 덤프에 사용하는 설정이다.</p><div class="informaltable"><table border="1" class="informaltable"><colgroup><col align="left" width="29%" /><col width="71%" /></colgroup><thead><tr><th align="center">옵션</th><th align="center">설명</th></tr></thead><tbody><tr><td align="left"><p>source_dir (필수)</p></td><td align="left"><p>덤프 대상 디렉터리 경로</p><p>여러 디렉터리를 덤프할 경우 역슬래시(\) 문자로 개행하여 나열한다.</p><pre class="programlisting">source_dir = /data/2012 \
+/data/2013 \
+/data/2014</pre></td></tr><tr><td align="left"><p>allow_file</p></td><td align="left"><p>덤프 대상 파일 확장자 (대소문자 구분 안함)</p></td></tr><tr><td align="left"><p>field_mapping (필수)</p></td><td align="left"><p>출력할 덤프 파일의 태그명과 XML 문서 상의 XPath를 서로 연결하거나, XPath로부터 획득한 값을 변경, 가공하기 위한 그루비 함수를 설정한다.</p><p>필드 매핑에 설정된 XPath는 실행 시점에 해당 포인터의 문자열 값으로 계산된다.</p><pre class="programlisting">field_mapping = {
+ ID     = /konan/businessObject/@id
+ TYPE   = /konan/businessObject/objectType
+ PART   = /konan/businessObject/attributeList/attribute[name=&quot;Part Name&quot;]/string
+ MODIFIED = SampleGroovy.formatDate(@/konan/businessObject/modification/datetime@)
+}</pre><p>특정 노드의 텍스트를 나타내기 위해서는 위의 예제와 같이 text()함수를 생략해도 된다.</p><p>즉, /konan/businessObject/objectType과 /konan/businessObject/objectType[text()]는 동일한 문자열을 반환한다. </p><p>XPath 문법에 대해서는 <a class="link" href="xp.html" title="부록 D. XPath 튜토리얼">&quot;XPath 튜토리얼&quot;</a>을 참고한다.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p>XML 1건당 레코드 1건이 덤프 된다.</p></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p>하나의 노드에 N개의 값이 존재할 경우 하나의 필드에 값들을 구분자(' | ')를 사용하여 덤프한다.</p><p>ex) &lt;field명&gt; 값1 | 값2 | 값3 &lt;/field명&gt;</p></div></td></tr><tr><td align="left">iud_method</td><td align="left"><p>증분 덤프 시 I(insert), U(update), D(delete)를 결정하는 메소드</p><pre class="programlisting">iud_method = XMLGroovy.decide_IUD(@FILE@)</pre></td></tr></tbody></table></div></div></div>
+    </div>
+
+    <div id="wh-footer">
+    <p id="page-footer" style="font-family: 'Malgun Gothic',Helvetica,Arial,sans-serif;font-size: 12px; margin-top: 20px;">Copyright <span style="color: #FF8526;">Konan Technology</span> Inc. All Rights Reserved.</p></div>
+  </body></html>

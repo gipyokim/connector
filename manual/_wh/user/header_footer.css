@@ -1,0 +1,126 @@
+#page-header {
+    background-color: #0472E3;
+/*  background-image: url(header_footer_files/top_gradient.png); 
+    background-repeat: repeat-x; 
+    background-position: top left; 
+    padding-top: 1ex;
+    padding-left: 1ex;
+    padding-right: 1ex;
+    padding-bottom: 0.5ex;
+*/
+    margin: 0;
+	
+}
+
+#page-header-title {
+    text-align: center;
+    color: #394986;
+    font-size: 200%;
+    font-weight: bold;
+}
+
+#page-footer {
+    color: gray;
+    font-size: 85%;
+    /*font-style: italic;*/
+    padding: 0.5ex;
+    margin: 0;
+	
+	/*
+	color: gray;
+    font-size: 85%;
+    font-style: italic;
+    padding: 0.5ex;
+    margin: 0;
+    height: 70px;
+    width: 100%;
+    bottom: 0;
+    display: block;
+    position: fixed;
+    background-color: #ededed;
+	*/
+}
+.toc-toc li{
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+.toc-toc li.toc-collapsed {
+    background-image: url(header_footer_files/toc-collapsed.gif);
+    padding-left: 16px;
+	padding-bottom: 3px;
+	padding-top: 3px;
+}
+
+.toc-toc li.toc-expanded {
+    background-image: url(header_footer_files/toc-expanded.gif);
+    padding-left: 16px;
+}
+
+/**************************************************** */
+
+
+.hl-doctype {
+    color: #008080;
+}
+
+.ui-tabs .ui-tabs-nav{
+	/*background: none;*/
+	border-right: none;
+	border-left: none;
+	
+}
+.ui-widget .ui-widget{
+}
+
+ul#wh-toc.toc-toc{
+	font-size:13px;
+	margin : 3px;
+}
+
+.toc-toc li {
+
+    background-position: 0 8px !important;
+
+}
+
+/**************************************************** */
+
+#wh-header {
+   margin-bottom: 0;
+}
+
+
+#wh-separator{
+	width:10px;
+}
+/*
+#wh-separator.wh-hide-navigation {
+    background-image: none !important;
+}
+*/
+#wh-footer {
+    margin-top: 2px;
+	display: block;
+	position: fixed;
+	bottom: 0;
+	height: 70px;
+	width:100%;
+	background-color: #EDEDED;
+	text-align: center;
+}
+.ui-widget.ui-widget-content {
+    border: 0px;
+}
+
+#wh-toc {
+    overflow-y: scroll;
+}
+
+#wh-content{
+	border:0;
+}
+
+.toc-toc li > * {
+	padding-top: 3px;
+	padding-bottom:3px;
+}

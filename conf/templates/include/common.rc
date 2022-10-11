@@ -1,0 +1,35 @@
+deny_file_types = ai,bmp,jpg,gif,ico,img,png,psd,vsd,tif,tiff,mpg,mpeg,mp3,mp4,ra,ram,ogg,avi,asf,swf,wmv,mov,wmf,wma,emf,wav,exe,ex_,exp,msi,bat,com,cab,cmd,fot,bak,sys,sy_,bin,mod,db,dll,dl_,tlb,ocx,msp,pdb
+separator = {
+	file = |
+	text = <##@@##>
+}
+
+text_filter TextFilter = {
+	address = host:7574
+	charset = UTF-8
+}
+
+data_source Oracle = {
+	driver = oracle.jdbc.driver.OracleDriver
+	url = jdbc:oracle:thin:@host:1521:SID
+	user = xxxx
+	password = xxxx
+}
+
+data_source MSSQL = {
+	driver = com.microsoft.sqlserver.jdbc.SQLServerDriver
+	url = jdbc:sqlserver://host:1433;databaseName=db-name
+	user = xxxx
+	password = xxxx
+}
+
+data_source MySQL = {
+	driver = com.mysql.jdbc.Driver
+	url = jdbc:mysql://host:3306/db-name
+	user = xxxx
+	password = xxxx
+}
+
+mongo_source MongoDB = {
+	url = mongodb://host:27017/sample
+}

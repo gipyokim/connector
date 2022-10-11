@@ -1,0 +1,36 @@
+#########################################################
+# Sample mongodb job definition
+#########################################################
+
+#########################################################
+# Text filter, data source, field mapping configuration 
+#########################################################
+!include include/common.rc
+
+#########################################################
+# Common settings 
+#########################################################
+type = mongo
+target_dir = /home/some/where
+# format = fgf
+# charset = UTF-8
+# max_file_size = 10MB
+# init = clear | backup | keep
+# queue_size = 200 
+# thread_count = 4
+# before = SampleGroovy.beforeProcess(@mode@)
+# after = SampleGroovy.afterProcess(@mode@)
+
+#########################################################
+# MONGO specific settings 
+#########################################################
+mongo_source = MongoDB
+query = table{}
+# fetch_size = 128
+# field_mapping = Sample
+# inc_thread_count = 4
+# inc_strategy = off | hvm
+# hvm_column =
+# hvm_add_condition =
+# hvm_iud_method = SampleGroovy.decision_IUD(@reg_date@, @mod_date@, @delete_YN@)
+ 

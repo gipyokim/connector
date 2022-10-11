@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/html; charset=UTF-8" http-equiv="content-type" /><title>1.4. 연산자 (Operator)</title><link href="webhelp.css" rel="stylesheet" type="text/css" /><meta content="DocBook XSL Stylesheets V1.79.1" name="generator" /><link href="index.html" rel="home" title="KONAN Connector V2.1" /><link href="apds01.html" rel="up" title="1. XPath 구문" /><link href="apds01s03.html" rel="prev" title="1.3. 서술자 (Predicate)" /><link href="mongo_tutorial.html" rel="next" title="부록 E. MongoDB 튜토리얼" /><link href="_wh/jquery-ui.css" rel="stylesheet" type="text/css" /><link href="_wh/wh.css" rel="stylesheet" type="text/css" /><script src="_wh/jquery.min.js" type="text/javascript">
+    </script><script src="_wh/jquery-ui.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/wh.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/search.js" type="text/javascript">
+    </script><link href="_wh/user/header_footer.css" rel="stylesheet" type="text/css" /></head><body>
+    <div id="wh-header">
+    
+  
+  
+	 <table id="page-header" style="border-spacing: 0; width: 100%; height:63px; background-color:#EDEDED; border-bottom:2px solid #dddddd;">
+      <tr>
+        <td style="vertical-align: middle; width: 280px; ">
+		
+		</td>
+
+        <td style="vertical-align: middle;"><h1 id="page-header-title">커넥터 사용자 설명서</h1></td>
+
+        <td style="vertical-align: middle; width: 110px;"> </td>
+      </tr>
+    </table>
+
+	
+</div>
+
+    <div id="wh-body">
+      <div id="wh-navigation">
+        <ul id="wh-tabs">
+          <li id="wh-toc-tab"><a href="#wh-toc-pane"><span>Contents</span></a></li>
+          
+          <li id="wh-search-tab"><a href="#wh-search-pane"><span>Search</span></a></li>
+        </ul>
+        <div id="wh-toc-pane">
+          <div id="wh-toc-form">
+            <span id="wh-toc-control"><a href="#">Collapse 
+            All</a><a href="#">Expand All</a></span>
+            <button id="wh-toc-previous">Previous</button>
+            <button id="wh-toc-next">Next</button>
+            <button id="wh-toc-print">Print</button>
+          </div>
+          <script charset="UTF-8" src="_wh/toc.js" type="text/javascript">
+          </script>
+        </div>
+        
+        <div id="wh-search-pane">
+          <div id="wh-search-form">
+            <input id="wh-search-field" type="text" /><button id="wh-search-button">Search</button><span id="wh-highlight-group"><input checked="checked" id="wh-highlight-toggle" type="checkbox" /><label for="wh-highlight-toggle">Toggle Highlight</label></span>
+          </div>
+          <div id="wh-search-results">
+          </div>
+        </div>
+      </div>
+      <div id="wh-separator">
+      </div>
+      <div id="wh-content">
+      <div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="d0e4534"></a>1.4. 연산자 (Operator)</h3></div></div></div><p>다음은 XPath 표현식에서 사용할 수 있는 연산자들이다.</p><div class="informaltable"><table border="1" class="informaltable"><colgroup><col align="left" width="15%" /><col align="left" width="28%" /><col width="57%" /></colgroup><thead><tr><th align="center">연산자</th><th align="center">설명</th><th align="center">예제</th></tr></thead><tbody><tr><td align="left"><p>|</p></td><td align="left"><p>두 노드 집합을 통합</p></td><td align="left"><p>//book | //cd</p></td></tr><tr><td align="left"><p>+</p></td><td align="left"><p>더하기</p></td><td align="left"><p>6 + 4</p></td></tr><tr><td align="left"><p>-</p></td><td align="left"><p>빼기</p></td><td align="left"><p>6 - 4</p></td></tr><tr><td align="left"><p>*</p></td><td align="left"><p>곱하기</p></td><td align="left"><p>6 * 4</p></td></tr><tr><td align="left"><p>div</p></td><td align="left"><p>나누기</p></td><td align="left"><p>8 div 4</p></td></tr><tr><td align="left"><p>=</p></td><td align="left"><p>같음</p></td><td align="left"><p>price=9.80</p></td></tr><tr><td align="left"><p>!=</p></td><td align="left"><p>다름</p></td><td align="left"><p>price!=9.80</p></td></tr><tr><td align="left"><p>&lt;</p></td><td align="left"><p>작음</p></td><td align="left"><p>price&lt;9.80</p></td></tr><tr><td align="left"><p>&lt;=</p></td><td align="left"><p>작거나 같음</p></td><td align="left"><p>price&lt;=9.80</p></td></tr><tr><td align="left"><p>&gt;</p></td><td align="left"><p>큼</p></td><td align="left"><p>price&gt;9.80</p></td></tr><tr><td align="left"><p>&gt;=</p></td><td align="left"><p>크거나 같음</p></td><td align="left"><p>price&gt;=9.80</p></td></tr><tr><td align="left"><p>or</p></td><td align="left"><p>논리 OR</p></td><td align="left"><p>price=9.80 or price=9.70</p></td></tr><tr><td align="left"><p>and</p></td><td align="left"><p>논리 AND</p></td><td align="left"><p>price&gt;9.00 and price&lt;9.90</p></td></tr><tr><td align="left"><p>mod</p></td><td align="left"><p>모듈러 연산</p></td><td align="left"><p>5 mod 2</p></td></tr></tbody></table></div></div></div>
+    </div>
+
+    <div id="wh-footer">
+    <p id="page-footer" style="font-family: 'Malgun Gothic',Helvetica,Arial,sans-serif;font-size: 12px; margin-top: 20px;">Copyright <span style="color: #FF8526;">Konan Technology</span> Inc. All Rights Reserved.</p></div>
+  </body></html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/html; charset=UTF-8" http-equiv="content-type" /><title>1. 문법</title><link href="webhelp.css" rel="stylesheet" type="text/css" /><meta content="DocBook XSL Stylesheets V1.79.1" name="generator" /><link href="index.html" rel="home" title="KONAN Connector V2.1" /><link href="cnt_setting.html" rel="up" title="3장. 작업 설정" /><link href="cnt_setting.html" rel="prev" title="3장. 작업 설정" /><link href="ch03s02.html" rel="next" title="2. 공통" /><link href="_wh/jquery-ui.css" rel="stylesheet" type="text/css" /><link href="_wh/wh.css" rel="stylesheet" type="text/css" /><script src="_wh/jquery.min.js" type="text/javascript">
+    </script><script src="_wh/jquery-ui.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/wh.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/search.js" type="text/javascript">
+    </script><link href="_wh/user/header_footer.css" rel="stylesheet" type="text/css" /></head><body>
+    <div id="wh-header">
+    
+  
+  
+	 <table id="page-header" style="border-spacing: 0; width: 100%; height:63px; background-color:#EDEDED; border-bottom:2px solid #dddddd;">
+      <tr>
+        <td style="vertical-align: middle; width: 280px; ">
+		
+		</td>
+
+        <td style="vertical-align: middle;"><h1 id="page-header-title">커넥터 사용자 설명서</h1></td>
+
+        <td style="vertical-align: middle; width: 110px;"> </td>
+      </tr>
+    </table>
+
+	
+</div>
+
+    <div id="wh-body">
+      <div id="wh-navigation">
+        <ul id="wh-tabs">
+          <li id="wh-toc-tab"><a href="#wh-toc-pane"><span>Contents</span></a></li>
+          
+          <li id="wh-search-tab"><a href="#wh-search-pane"><span>Search</span></a></li>
+        </ul>
+        <div id="wh-toc-pane">
+          <div id="wh-toc-form">
+            <span id="wh-toc-control"><a href="#">Collapse 
+            All</a><a href="#">Expand All</a></span>
+            <button id="wh-toc-previous">Previous</button>
+            <button id="wh-toc-next">Next</button>
+            <button id="wh-toc-print">Print</button>
+          </div>
+          <script charset="UTF-8" src="_wh/toc.js" type="text/javascript">
+          </script>
+        </div>
+        
+        <div id="wh-search-pane">
+          <div id="wh-search-form">
+            <input id="wh-search-field" type="text" /><button id="wh-search-button">Search</button><span id="wh-highlight-group"><input checked="checked" id="wh-highlight-toggle" type="checkbox" /><label for="wh-highlight-toggle">Toggle Highlight</label></span>
+          </div>
+          <div id="wh-search-results">
+          </div>
+        </div>
+      </div>
+      <div id="wh-separator">
+      </div>
+      <div id="wh-content">
+      <div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="d0e557"></a>1. 문법</h2></div></div></div><p>작업 설정 파일(*.rc)은 아래와 같은 문법으로 작성한다.</p><pre class="programlisting"><span class="green"># Comment</span>
+ 
+<span class="green"># Include directive</span>
+!include file_path
+ 
+<span class="green"># Definition</span>
+key_1 = value_1
+ 
+<span class="green"># Multi-line definition</span>
+key_2 = line_1 \
+line_2 \
+line_3
+ 
+<span class="green"># Inline definition</span>
+key_3 = {
+    sub_key_31 = value_31
+    sub_key_32 = value_32
+}
+ 
+<span class="green"># Declaration</span>
+key_4 name = {
+    sub_key_41 = value_41
+    sub_key_42 = value_42
+}
+ 
+<span class="green"># Reference</span>
+key_4 = name</pre><p>공백 라인들은 무시되며, 샾(#) 문자로 시작되는 라인은 주석으로 취급된다. 느낌표(!)로 시작하는 라인은 명령어로 현재 include만 지원된다.</p><p>나머지 라인들은 각종 옵션에 대한 정의로서 단일 값 정의 및 속성 정의로 나누어진다. 역슬래시(\) 문자를 라인 끝에 붙일 경우 여러 라인의 값을 정의할 수 있다. 속성 정의는 key = {}로 정의하며 라인 끝에 '{' 와 '}'가 위치해야 한다. <span class="bold"><strong>아래와 같이 속성을 먼저 선언하고 뒤에서 참조할 수도 있다.</strong></span></p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>속성 선언</p><pre class="programlisting">key_4 name = {
+    sub_key_41 = value_41
+    sub_key_42 = value_42
+}</pre></li><li class="listitem"><p>참조</p><pre class="programlisting"><span class="boldblue">key_4 = name</span></pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p>위처럼 name으로 속성 선언을 했다면 반드시 뒤에서 참조해야 정상적으로 동작된다.</p></div></li></ul></div><p>key_4는</p><pre class="programlisting">key_4 = {
+    sub_key_41 = value_41
+    sub_key_42 = value_42
+}</pre><p>와 같은 효과를 본다. 같은 속성을 여러 옵션으로 정의할 경우 유용하다.</p></div></div>
+    </div>
+
+    <div id="wh-footer">
+    <p id="page-footer" style="font-family: 'Malgun Gothic',Helvetica,Arial,sans-serif;font-size: 12px; margin-top: 20px;">Copyright <span style="color: #FF8526;">Konan Technology</span> Inc. All Rights Reserved.</p></div>
+  </body></html>

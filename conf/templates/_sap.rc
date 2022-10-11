@@ -1,0 +1,54 @@
+!include include/common.rc
+
+#########################################################
+# Common settings 
+#########################################################
+type = sap
+target_dir = /home/some/where
+# format = fgf
+# charset = UTF-8
+# max_file_size = 10MB
+# init = clear | backup | keep
+# queue_size = 200 
+# thread_count = 4
+# before = SampleGroovy.beforeProcess(@mode@)
+# after = SampleGroovy.afterProcess(@mode@)
+
+#########################################################
+# SAP specific settings 
+#########################################################
+sap_source = {
+# for common
+	host = 1.1.1.1		
+	client = 110
+	user = kr20
+	password = 1111 
+	lang = ko	
+# for as mode
+	sysnr = 00
+	poolCapacity = 3 
+	peakLimit = 10	
+# for ms mode
+	r3name = AEP
+	group = PRD
+# extra
+	properties = jco.client.trace=true,jco.destination.max_get_client_time=10000
+}
+fetch_size = 128
+function = FC
+#import_parameter = type=1,name=id 
+include_table = table1,table2
+block_key = key
+block_count = count
+block_remain = remain
+field_mapping = {
+	__pk__ = code
+	code = code
+	name = name
+}
+# inc_strategy = hvm
+# inc_thread_count = 4
+# hvm_column =
+# hvm_add_condition =
+# hvm_del_condition =
+# hvm_iud_method = SampleGroovy.decision_IUD(@reg_date@, @mod_date@, @delete_YN@)

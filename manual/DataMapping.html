@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/html; charset=UTF-8" http-equiv="content-type" /><title>4장. 필드 매핑</title><link href="webhelp.css" rel="stylesheet" type="text/css" /><meta content="DocBook XSL Stylesheets V1.79.1" name="generator" /><link href="index.html" rel="home" title="KONAN Connector V2.1" /><link href="index.html" rel="up" title="KONAN Connector V2.1" /><link href="ch03s10s01.html" rel="prev" title="10.1. !include" /><link href="ch04s01.html" rel="next" title="1. 예약 칼럼" /><link href="_wh/jquery-ui.css" rel="stylesheet" type="text/css" /><link href="_wh/wh.css" rel="stylesheet" type="text/css" /><script src="_wh/jquery.min.js" type="text/javascript">
+    </script><script src="_wh/jquery-ui.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/wh.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/search.js" type="text/javascript">
+    </script><link href="_wh/user/header_footer.css" rel="stylesheet" type="text/css" /></head><body>
+    <div id="wh-header">
+    
+  
+  
+	 <table id="page-header" style="border-spacing: 0; width: 100%; height:63px; background-color:#EDEDED; border-bottom:2px solid #dddddd;">
+      <tr>
+        <td style="vertical-align: middle; width: 280px; ">
+		
+		</td>
+
+        <td style="vertical-align: middle;"><h1 id="page-header-title">커넥터 사용자 설명서</h1></td>
+
+        <td style="vertical-align: middle; width: 110px;"> </td>
+      </tr>
+    </table>
+
+	
+</div>
+
+    <div id="wh-body">
+      <div id="wh-navigation">
+        <ul id="wh-tabs">
+          <li id="wh-toc-tab"><a href="#wh-toc-pane"><span>Contents</span></a></li>
+          
+          <li id="wh-search-tab"><a href="#wh-search-pane"><span>Search</span></a></li>
+        </ul>
+        <div id="wh-toc-pane">
+          <div id="wh-toc-form">
+            <span id="wh-toc-control"><a href="#">Collapse 
+            All</a><a href="#">Expand All</a></span>
+            <button id="wh-toc-previous">Previous</button>
+            <button id="wh-toc-next">Next</button>
+            <button id="wh-toc-print">Print</button>
+          </div>
+          <script charset="UTF-8" src="_wh/toc.js" type="text/javascript">
+          </script>
+        </div>
+        
+        <div id="wh-search-pane">
+          <div id="wh-search-form">
+            <input id="wh-search-field" type="text" /><button id="wh-search-button">Search</button><span id="wh-highlight-group"><input checked="checked" id="wh-highlight-toggle" type="checkbox" /><label for="wh-highlight-toggle">Toggle Highlight</label></span>
+          </div>
+          <div id="wh-search-results">
+          </div>
+        </div>
+      </div>
+      <div id="wh-separator">
+      </div>
+      <div id="wh-content">
+      <div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="DataMapping"></a>4장. 필드 매핑</h1></div></div></div><p>출력할 덤프 파일의 태그명과 데이터베이스 테이블의 칼럼명, 혹은 예약 칼럼명을 서로 연결하거나, 칼럼값 변경, 가공하기 위한 그루비 함수를 설정한다.</p><p>왼쪽 필드명은 덤프 파일에서의 태그명 을 의미하고, 오른쪽 필드명은 DB 칼럼명을 의미한다.</p><p>빈 값을 출력하기 위해서는 null이라는 예약어를 사용할 수도 있다. 혹은 하나 이상의 그루비 함수를 호출하도록 하여 결괏값을 가공해서 출력할 수도 있다.</p><p>증분 덤프에서 삭제 처리가 필요할 경우에는 <span class="bold"><strong>__pk__</strong></span>라는 예약어로 <span class="bold"><strong>PK</strong></span>로 사용되는 필드명을 설정해야 한다. 복합키의 경우에는 각 필드명을 파이프(|) 문자로 연결한다.</p><pre class="programlisting">field_mapping = {
+    __pk__ = file_id
+    file_id = docid
+    file_size = null
+    file_name = SampleGroovy.removeTags(&quot;1&quot;, @file_name@)
+    file_data = content = SampleGroovy.filtering(@file_path@) \
+            SampleGroovy.removeTags(@content@)
+}</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p>fsg, notes, sps, mongo, xml 타입은 필드 매핑 설정 시, 대소문자를 구분하여 작성해야만 한다. (dbg, reproc타입은 제외)</p></div><div class="informaltable"><table border="1" class="informaltable"><colgroup><col align="left" width="27%" /><col width="73%" /></colgroup><thead><tr><th align="center">필드명</th><th align="center">매핑값</th></tr></thead><tbody><tr><td align="left"><p>__pk__</p></td><td align="left"><p>pk로 사용되는 필드명</p></td></tr><tr><td align="left"><p>file_id</p></td><td align="left"><p>필드-칼럼 매핑</p><p>docid 칼럼 값을 file_id 태그로 출력한다.</p></td></tr><tr><td align="left"><p>file_size</p></td><td align="left"><p>태그만 출력하고 값은 출력하지 않는다.</p></td></tr><tr><td align="left"><p>file_name</p></td><td align="left"><p>칼럼 값 가공 처리</p><p>칼럼 값 가공 시 호출할 그루비 함수를 설정한다.</p><p>그루비 함수 설정 방법은 아래와 같다.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>소스 파일명.메소드명(인자...)</p></li></ul></div><p>골뱅이(@) 문자로 묶인 인자는 칼럼명 변수이며, 그 밖의 상수는 따옴표(&quot;)로 묶거나(문자열 상수), 일반 숫자로 설정한다.</p></td></tr><tr><td align="left"><p>file_data</p></td><td align="left"><p>칼럼 값 가공 처리</p><p>칼럼 값 가공 시 호출할 함수가 여러 개일 경우 역슬래시(\) 문자 뒤로 개행하여 선언한다. 가공한 결과를 뒤에서 참조할 때 참조할 이름을 설정할 수도 있다. (설정하지 않을 경우 필드명으로 설정된다.)</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><pre class="programlisting">content = SampleGroovy.filtering(...)</pre></li></ul></div><p>로 설정한 경우 SampleGroovy에서 filtering 함수를 호출한 결과를 content란 이름으로 저장하고, removeTags 함수 호출 시 이 content에 저장된 값을 인자로 호출한다.</p><p>removeTags 호출 결과는 다시 content란 이름으로 저장되고 덤프 파일 생성 시 file_data라는 태그명 뒤에 그 값이 기록된다.</p></td></tr></tbody></table></div></div></div>
+    </div>
+
+    <div id="wh-footer">
+    <p id="page-footer" style="font-family: 'Malgun Gothic',Helvetica,Arial,sans-serif;font-size: 12px; margin-top: 20px;">Copyright <span style="color: #FF8526;">Konan Technology</span> Inc. All Rights Reserved.</p></div>
+  </body></html>

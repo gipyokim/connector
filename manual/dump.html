@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/html; charset=UTF-8" http-equiv="content-type" /><title>6장. 덤프</title><link href="webhelp.css" rel="stylesheet" type="text/css" /><meta content="DocBook XSL Stylesheets V1.79.1" name="generator" /><link href="index.html" rel="home" title="KONAN Connector V2.1" /><link href="index.html" rel="up" title="KONAN Connector V2.1" /><link href="conv.html" rel="prev" title="4. 설정 파일 변환" /><link href="ch06s01.html" rel="next" title="1. 덤프 모니터" /><link href="_wh/jquery-ui.css" rel="stylesheet" type="text/css" /><link href="_wh/wh.css" rel="stylesheet" type="text/css" /><script src="_wh/jquery.min.js" type="text/javascript">
+    </script><script src="_wh/jquery-ui.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/wh.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/search.js" type="text/javascript">
+    </script><link href="_wh/user/header_footer.css" rel="stylesheet" type="text/css" /></head><body>
+    <div id="wh-header">
+    
+  
+  
+	 <table id="page-header" style="border-spacing: 0; width: 100%; height:63px; background-color:#EDEDED; border-bottom:2px solid #dddddd;">
+      <tr>
+        <td style="vertical-align: middle; width: 280px; ">
+		
+		</td>
+
+        <td style="vertical-align: middle;"><h1 id="page-header-title">커넥터 사용자 설명서</h1></td>
+
+        <td style="vertical-align: middle; width: 110px;"> </td>
+      </tr>
+    </table>
+
+	
+</div>
+
+    <div id="wh-body">
+      <div id="wh-navigation">
+        <ul id="wh-tabs">
+          <li id="wh-toc-tab"><a href="#wh-toc-pane"><span>Contents</span></a></li>
+          
+          <li id="wh-search-tab"><a href="#wh-search-pane"><span>Search</span></a></li>
+        </ul>
+        <div id="wh-toc-pane">
+          <div id="wh-toc-form">
+            <span id="wh-toc-control"><a href="#">Collapse 
+            All</a><a href="#">Expand All</a></span>
+            <button id="wh-toc-previous">Previous</button>
+            <button id="wh-toc-next">Next</button>
+            <button id="wh-toc-print">Print</button>
+          </div>
+          <script charset="UTF-8" src="_wh/toc.js" type="text/javascript">
+          </script>
+        </div>
+        
+        <div id="wh-search-pane">
+          <div id="wh-search-form">
+            <input id="wh-search-field" type="text" /><button id="wh-search-button">Search</button><span id="wh-highlight-group"><input checked="checked" id="wh-highlight-toggle" type="checkbox" /><label for="wh-highlight-toggle">Toggle Highlight</label></span>
+          </div>
+          <div id="wh-search-results">
+          </div>
+        </div>
+      </div>
+      <div id="wh-separator">
+      </div>
+      <div id="wh-content">
+      <div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="dump"></a>6장. 덤프</h1></div></div></div><p>이 장에서는 덤프 수행 및 덤프 파일을 확인하는 방법에 관해 설명한다.</p><p>지정된 덤프 작업을 시작한다.</p><pre class="programlisting">run.bat [-start] [start-options] &lt;start-args&gt;</pre><div class="informaltable"><a id="dump_op"></a><table border="1" class="informaltable"><colgroup><col align="left" width="27%" /><col width="73%" /></colgroup><thead><tr><th align="center">옵션</th><th align="center">설명</th></tr></thead><tbody><tr><td align="left"><a id="StartOptions"></a><p><a id="StartOptions_desc"></a>Start Options</p></td><td align="left"><p></p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>-mi=&lt;seconds&gt; : 진행 상태를 기록할 주기를 설정한다. 설정하지 않을 경우 기본값은 1초</p></li><li class="listitem"><p>-ti =&lt;minutes&gt; : 덤프 타임아웃을 설정한다.</p></li><li class="listitem"><p>-s : 파일 시스템 스캔 작업만 수행한다. 필터링은 수행하지 않는다.</p></li><li class="listitem"><p>-d : 이전에 스캔된 파일 목록으로 필터링을 수행한다.</p></li><li class="listitem"><p>-v : 작업 진행 상태를 콘솔에 표시한다.</p></li></ul></div></td></tr><tr><td align="left"><p>Start Arguments</p></td><td align="left"><p></p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>type : 수행할 작업의 종류 (fsg | dbg | reproc | mongo | sps | notes | xml)</p></li><li class="listitem"><p>job : 수행할 작업 명</p></li><li class="listitem"><p>mode : 덤프 방식 (reproc 작업 시 생략)</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>bulk : 벌크 덤프</p></li><li class="listitem"><p>inc : 증분 덤프</p></li></ul></div></li></ul></div></td></tr></tbody></table></div></div></div>
+    </div>
+
+    <div id="wh-footer">
+    <p id="page-footer" style="font-family: 'Malgun Gothic',Helvetica,Arial,sans-serif;font-size: 12px; margin-top: 20px;">Copyright <span style="color: #FF8526;">Konan Technology</span> Inc. All Rights Reserved.</p></div>
+  </body></html>

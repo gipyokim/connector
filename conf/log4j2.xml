@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+ 
+    <!--  Properties -->
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %m{nolookups}%n</Property>
+        <Property name="APP_HOME">${sys:app.home}/logs</Property>   
+    </Properties>
+     
+    <Appenders>
+         <!-- Console -->
+        <Console name="stdout" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d{HH:mm:ss}] %m{nolookups}%n"/>
+        </Console>
+                   
+        <!-- system.log -->
+        <RollingFile name="system" fileName="${APP_HOME}/system.log"
+            filePattern="${APP_HOME}/system.log.%d{yyyy-MM-dd}">          
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} %p %t %m{nolookups}%n"/>
+            <Policies>                
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>            
+        </RollingFile>
+
+        <!-- error.log -->
+        <RollingFile name="error" fileName="${APP_HOME}/error.log"
+             filePattern="${APP_HOME}/error_%i.log">          
+            <PatternLayout pattern="%m{nolookups}%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- skip.log -->
+        <RollingFile name="skip" fileName="${APP_HOME}/skip.log"
+            filePattern="${APP_HOME}/skip_%i.log">          
+            <PatternLayout pattern="%m{nolookups}%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- groovy.log -->
+        <RollingFile name="groovy" fileName="${APP_HOME}/groovy_logs/groovy.log"
+            filePattern="${APP_HOME}/groovy_logs/groovy_%i.log">          
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} %p %t %m{nolookups}%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- filter.log -->
+        <RollingFile name="filter" fileName="${APP_HOME}/filter_logs/filter.log"
+            filePattern="${APP_HOME}/filter_logs/filter_%i.log">          
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss}]%m{nolookups}%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+ 
+    <Loggers>       
+        <!-- console -->
+        <Logger name="stdout" level="INFO">
+            <AppenderRef ref="stdout" />                          
+        </Logger>  
+
+        <!-- system.log -->
+        <Logger name="com.konantech.connector" additivity="false" level="DEBUG">
+            <AppenderRef ref="system" />                          
+        </Logger>
+
+        <!-- error.log -->
+        <Logger name="error" additivity="false" level="ERROR">
+            <AppenderRef ref="error" />                         
+        </Logger>
+
+        <!-- skip.log -->
+        <Logger name="skip" level="DEBUG">
+            <AppenderRef ref="skip" />                        
+        </Logger>
+
+         <!-- groovy.log -->
+        <Logger name="com.konantech.connector.groovy" level="DEBUG" additivity="false">
+            <AppenderRef ref="groovy" />                      
+        </Logger>
+
+        <!-- filter.log -->
+        <Logger name="com.konantech.connector.groovy.filter" level="ERROR" additivity="false">
+            <AppenderRef ref="filter" />                       
+        </Logger>
+                                     
+        <Root level="FATAL">
+            <AppenderRef ref="stdout"/>
+        </Root>
+
+     </Loggers>
+ 
+</Configuration>

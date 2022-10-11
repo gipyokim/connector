@@ -1,0 +1,32 @@
+#########################################################
+# Sample reprocessing job definition
+#########################################################
+
+#########################################################
+# Text filter configuration 
+#########################################################
+!include include/common.rc
+
+#########################################################
+# Common settings 
+#########################################################
+type = reproc
+target_dir = /home/some/where
+# format = fgf
+# charset = UTF-8
+# max_file_size = 10MB
+# init = clear | backup | keep
+# queue_size = 200 
+# thread_count = 4
+# before = SampleGroovy.beforeProcess(@mode@)
+# after = SampleGroovy.afterProcess(@mode@)
+
+#########################################################
+# REPROC specific settings 
+#########################################################
+source_dir = /data/some/where
+# source_charset = UTF-8
+# field_mapping = {
+#	target_field = source_field
+#	...
+#}

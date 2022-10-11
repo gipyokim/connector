@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/html; charset=UTF-8" http-equiv="content-type" /><title>6.1. High Value Mark (MongoDB, HVM)</title><link href="webhelp.css" rel="stylesheet" type="text/css" /><meta content="DocBook XSL Stylesheets V1.79.1" name="generator" /><link href="index.html" rel="home" title="KONAN Connector V2.1" /><link href="ch03s06.html" rel="up" title="6. MongoDB 덤프" /><link href="ch03s06.html" rel="prev" title="6. MongoDB 덤프" /><link href="ch03s07.html" rel="next" title="7. SharePoint 덤프" /><link href="_wh/jquery-ui.css" rel="stylesheet" type="text/css" /><link href="_wh/wh.css" rel="stylesheet" type="text/css" /><script src="_wh/jquery.min.js" type="text/javascript">
+    </script><script src="_wh/jquery-ui.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/wh.min.js" type="text/javascript">
+    </script><script charset="UTF-8" src="_wh/search.js" type="text/javascript">
+    </script><link href="_wh/user/header_footer.css" rel="stylesheet" type="text/css" /></head><body>
+    <div id="wh-header">
+    
+  
+  
+	 <table id="page-header" style="border-spacing: 0; width: 100%; height:63px; background-color:#EDEDED; border-bottom:2px solid #dddddd;">
+      <tr>
+        <td style="vertical-align: middle; width: 280px; ">
+		
+		</td>
+
+        <td style="vertical-align: middle;"><h1 id="page-header-title">커넥터 사용자 설명서</h1></td>
+
+        <td style="vertical-align: middle; width: 110px;"> </td>
+      </tr>
+    </table>
+
+	
+</div>
+
+    <div id="wh-body">
+      <div id="wh-navigation">
+        <ul id="wh-tabs">
+          <li id="wh-toc-tab"><a href="#wh-toc-pane"><span>Contents</span></a></li>
+          
+          <li id="wh-search-tab"><a href="#wh-search-pane"><span>Search</span></a></li>
+        </ul>
+        <div id="wh-toc-pane">
+          <div id="wh-toc-form">
+            <span id="wh-toc-control"><a href="#">Collapse 
+            All</a><a href="#">Expand All</a></span>
+            <button id="wh-toc-previous">Previous</button>
+            <button id="wh-toc-next">Next</button>
+            <button id="wh-toc-print">Print</button>
+          </div>
+          <script charset="UTF-8" src="_wh/toc.js" type="text/javascript">
+          </script>
+        </div>
+        
+        <div id="wh-search-pane">
+          <div id="wh-search-form">
+            <input id="wh-search-field" type="text" /><button id="wh-search-button">Search</button><span id="wh-highlight-group"><input checked="checked" id="wh-highlight-toggle" type="checkbox" /><label for="wh-highlight-toggle">Toggle Highlight</label></span>
+          </div>
+          <div id="wh-search-results">
+          </div>
+        </div>
+      </div>
+      <div id="wh-separator">
+      </div>
+      <div id="wh-content">
+      <div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="mongodb_hvm"></a>6.1. High Value Mark (MongoDB, HVM)</h3></div></div></div><p>inc_strategy를 hvm로 설정하면 High Value Mark (HVM) 방식으로 증분 덤프한다. HVM 방식은 특정 날짜 칼럼의 최댓값을 기록하고 있다가 덤프 시 기록된 날짜 이후의 데이터를 가져오는 방식이다. 이러한 날짜 값은 data 디렉터리의 <span class="bold"><strong>&quot;작업명.status&quot;</strong></span> 파일에 last_hvm이란 프로퍼티로 덤프할 때마다 새로 계산되어 기록된다.</p><pre class="programlisting"><span class="blue">$ cat data/mongo.status</span>
+..
+<span class="bold"><strong># should escape character colon (:)</strong></span>
+last_hvm=2016-06-10T01\:56\:55.000Z
+...</pre><p>덤프 시 기록된 날짜 이후의 데이터를 가져오기 위해 쿼리를 생성해야 하는데 아래의 과정을 거친다.</p><pre class="programlisting">incremental_query = query + [hvm_add_condition]</pre><h4><a id="d0e1689"></a>예제1</h4><pre class="programlisting">query = sample.test_copy{'pk':{'$gt':1}}
+hvm_column = date</pre><p>기본 쿼리에서 증분 조건을 추가하여 검색하게 된다.</p><pre class="programlisting">{'$and':[{'pk':{'$gt':1}}, <span class="blue">{'date':{'$gt':&quot;20160610015654&quot;}}</span>]}</pre><h4><a id="d0e1700"></a>예제 2</h4><pre class="programlisting">query = sample.test_copy{'pk':{'$gt':1}}
+hvm_column = date
+<span class="blue">hvm_add_condition = {'ts':{'$gte': ISODate(&quot;#last_hvm#&quot;)}} </span></pre><p>기본 쿼리에서 증분 추가 조건을 더하면 아래와 같은 쿼리로 증분 데이터들을 검색하게 된다.</p><pre class="programlisting">{'$and':[{'pk':{'$gt':1}}, {'ts':{'$gte': ISODate :&quot;2016-06-10T01:56:54.000Z&quot;}}]}</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">참고</h3><p>증분 추가 조건에 &gt; 가 아닌 &gt;= 을 사용하는 이유는 증분 덤프 진행 중에 같은 시각의 데이터들이 추가될 수 있으므로, 데이터 유실을 막기 위함이다.</p></div><h4><a id="d0e1713"></a>hvm_iud_method</h4><p>증분 데이터들은 기본적으로 새로 추가된 데이터로 취급된다. 변경이나 삭제 레코드를 구분하기 위해서는 hvm_iud_method 선언이 필요하다. hvm_iud_method로 선언한 메소드는 해당 레코드의 변경 타입을 반환해야 한다. 새로 추가된 레코드일 경우에는 &quot;I&quot;, 변경된 레코드의 경우에는 &quot;U&quot;, 삭제된 레코드일 경우에는 &quot;D&quot;를 반환해야 한다. <a class="link" href="groovy.html" title="부록 C. Groovy"> SampleGroovy.groovy</a> 파일에서 <a class="link" href="decision_IUD.html" title="2.1. decision_IUD">decision_IUD</a> 메소드를 참고한다.</p></div></div>
+    </div>
+
+    <div id="wh-footer">
+    <p id="page-footer" style="font-family: 'Malgun Gothic',Helvetica,Arial,sans-serif;font-size: 12px; margin-top: 20px;">Copyright <span style="color: #FF8526;">Konan Technology</span> Inc. All Rights Reserved.</p></div>
+  </body></html>
